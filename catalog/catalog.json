@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "platforms": {
+    "switch": { "name": "Nintendo Switch", "color": "#e60012" },
+    "ps2": { "name": "PlayStation 2", "color": "#3d6fd8" },
+    "xbox": { "name": "Xbox", "color": "#3fae49" },
+    "x360": { "name": "Xbox 360", "color": "#8cc63f" },
+    "gc": { "name": "GameCube", "color": "#7b5cd6" },
+    "n64": { "name": "Nintendo 64", "color": "#f2a900" }
+  },
+  "games": [
+    {
+      "id": "totk-ultratears",
+      "title": "The Legend of Zelda: Tears of the Kingdom",
+      "platform": "switch",
+      "year": 2023,
+      "repo": "kuraeow/ultratears",
+      "asset": "UltraTears-builder-*-windows-x86_64.zip",
+      "exe": "UltraTears.exe",
+      "description": "UltraTears: port nativo para Windows da versão 1.4.3 via recompilação estática (ARM64 → C → x86-64), com gráficos em Vulkan. O jogo é compilado no seu PC a partir do seu próprio dump.",
+      "gameFiles": {
+        "label": "Pasta do dump (com as pastas exefs e romfs), versão 1.4.3",
+        "kind": "folder"
+      },
+      "build": {
+        "label": "Compilar o jogo",
+        "command": "setup.bat",
+        "args": ["{gameFiles}"],
+        "produces": "UltraTears.exe",
+        "note": "Abre uma janela do console e leva cerca de 30 minutos. Deixe a janela aberta até aparecer \"Done\". Se for interrompida, rode de novo: o que já foi feito é reaproveitado."
+      },
+      "requirements": [
+        "Windows 10/11 x64 com CPU AVX2 (Haswell / Ryzen ou mais novo)",
+        "GPU com Vulkan 1.3 e VK_EXT_shader_object",
+        "16 GB de RAM",
+        "~32 GB livres para a compilação + ~16 GB do dump"
+      ],
+      "notes": [
+        "Arquivos .nsp, .xci e .nca não funcionam: é preciso o dump extraído (exefs + romfs).",
+        "Os saves ficam na pasta userdata; o launcher a preserva nas atualizações.",
+        "Projeto em beta: só o início do jogo foi testado pelo autor."
+      ]
+    },
+    {
+      "id": "black-xbe",
+      "title": "BLACK",
+      "platform": "xbox",
+      "year": 2006,
+      "repo": "TGP482/BLACK-XBERecomp",
+      "asset": "*.zip",
+      "exe": "BLACK.exe",
+      "cover": "https://github.com/user-attachments/assets/e0156eb8-c1b5-49d9-ab93-3abb46bf5f47",
+      "description": "Port nativo para PC da versão de Xbox original, com opções gráficas estendidas, mouse e teclado, HDR, MSAA/SMAA, FOV ajustável e mais.",
+      "gameFiles": {
+        "label": "ISO ou arquivos extraídos do jogo (versão USA ou Europa)",
+        "kind": "any",
+        "extensions": ["iso"],
+        "copyTo": "assets"
+      },
+      "requirements": [
+        "Windows 10 64-bit, CPU com SSE4.2 e POPCNT",
+        "GPU com Direct3D 12",
+        "~3 GB livres"
+      ],
+      "notes": [
+        "A primeira execução compila o código do jogo para o seu PC (só acontece uma vez).",
+        "As opções ficam no menu do jogo ou no overlay aberto com F10."
+      ]
+    },
+    {
+      "id": "unleashed-recomp",
+      "title": "Sonic Unleashed",
+      "platform": "x360",
+      "year": 2008,
+      "repo": "hedge-dev/UnleashedRecomp",
+      "asset": "UnleashedRecomp-Windows.zip",
+      "exe": "UnleashedRecomp.exe",
+      "description": "Port nativo para PC da versão de Xbox 360, com suporte a altas resoluções e taxas de quadros.",
+      "notes": ["Na primeira execução, o próprio Unleashed Recompiled pede os arquivos do jogo e da atualização."]
+    },
+    {
+      "id": "zelda64-recomp",
+      "title": "The Legend of Zelda: Majora's Mask",
+      "platform": "n64",
+      "year": 2000,
+      "repo": "Zelda64Recomp/Zelda64Recomp",
+      "asset": "*-Windows.zip",
+      "exe": "Zelda64Recompiled.exe",
+      "description": "Zelda 64: Recompiled, port nativo de Majora's Mask com widescreen, alta taxa de quadros e suporte a mods.",
+      "notes": ["Na primeira execução, selecione a ROM (versão USA) dentro do próprio programa."]
+    }
+  ]
+}
